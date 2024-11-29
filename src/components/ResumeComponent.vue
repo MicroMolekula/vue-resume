@@ -2,14 +2,14 @@
   <div class="container my-5 p-4 border rounded bg-white" v-if="props.data">
 
     <div class="row mb-3">
-<!--       Фото и ФИО-->
-<!--      <div class="col-md-3">-->
-<!--        <img-->
-<!--            :src="resume.photoUrl"-->
-<!--            alt="Фото"-->
-<!--            class="img-fluid rounded-circle mb-3 img-set"-->
-<!--            style="min-height: 150px; max-width: 150px;">-->
-<!--      </div>-->
+      <!--       Фото и ФИО-->
+      <!--      <div class="col-md-3">-->
+      <!--        <img-->
+      <!--            :src="resume.photoUrl"-->
+      <!--            alt="Фото"-->
+      <!--            class="img-fluid rounded-circle mb-3 img-set"-->
+      <!--            style="min-height: 150px; max-width: 150px;">-->
+      <!--      </div>-->
       <div class="wrapper exmpl col-md-3">
         <img :src="props.data.photo" alt="Фото">
       </div>
@@ -73,7 +73,7 @@
 
 <script setup>
 
-import {ref} from "vue";
+import { ref } from "vue";
 
 const props = defineProps({
   data: Object
@@ -85,10 +85,23 @@ function getEducationString(edu) {
     return '';
   }
   let univer = edu.univer ? edu.univer : ''
-  if (univer) {
-    return `${level} — ${univer}, ${edu.fac}, ${edu.spec} (${edu.date})`
+  let result = '';
+  if (level) {
+    result += `${level}`
   }
-  return level
+  if (univer) {
+    result += ` — ${univer}`
+  }
+  if (edu.fac) {
+    result += `, ${edu.fac}`
+  }
+  if (edu.spec) {
+    result += `, ${edu.spec}`
+  }
+  if (edu.date) {
+    result += ` (${edu.date})`
+  }
+  return result
 }
 </script>
 
@@ -102,9 +115,11 @@ function getEducationString(edu) {
   height: 150px;
   border-radius: 50%;
 }
+
 .exmpl {
   overflow: hidden;
 }
+
 .exmpl img {
   width: auto;
   height: 200%;

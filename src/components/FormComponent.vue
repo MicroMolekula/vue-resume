@@ -56,7 +56,7 @@ function submitForm() {
     <InputSalary v-model="data.salary"></InputSalary>
     <InputDate title="Дата рождения" v-model="data.dateBirth"></InputDate>
     <InputEducation v-model="data.education"></InputEducation>
-    <button type="button" class="btn btn-primary" @click="submitForm">Применить</button>
+    <!-- <button type="button" class="btn btn-primary" @click="submitForm">Применить</button> -->
   </div>
 </template>
 
